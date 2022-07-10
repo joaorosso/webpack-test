@@ -26,12 +26,18 @@ module.exports = {
     plugins: [
         new webpack.optimize.ModuleConcatenationPlugin(),
         new HtmlWebpackPlugin({
-            template: './app/src/app.html',
-            filename: 'app.html',
+            template: './app/src/index.html',
+            filename: 'index.html',
             hash: true
         }),
         new MiniCssExtractPlugin({
             filename: 'style.css'
         })
-    ]
+    ],
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
+        port: 3000
+    }
 };
